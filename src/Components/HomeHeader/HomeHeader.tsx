@@ -1,14 +1,8 @@
 import React from "react";
-import {
-	Text,
-	View,
-	SafeAreaView,
-	Image,
-	ScrollView,
-} from "react-native";
+import { Text, View, SafeAreaView, Image, ScrollView } from "react-native";
 import styles from "./HomeHeader.style";
 import { Ionicons } from "@expo/vector-icons";
-import { Entypo } from '@expo/vector-icons';
+import { Entypo } from "@expo/vector-icons";
 
 function HomeHeader() {
 	return (
@@ -24,13 +18,20 @@ function HomeHeader() {
 					}}
 				/>
 				<View>
-					<Text>Hello,</Text>
-					<Text style={{ fontWeight: "600" }}>Timilehin</Text>
+					<Text style={{ fontFamily: "InterRegular" }}>Hello,</Text>
+					<Text style={{ fontWeight: "600", fontFamily: "InterSemiBold" }}>
+						Timilehin
+					</Text>
 				</View>
 			</View>
 			<View style={styles.icon_Wrapper}>
 				<Ionicons name='notifications-outline' size={24} color='black' />
-				<Entypo style={styles.icon_notifier} name="dot-single" size={26} color="red" />
+				<Entypo
+					style={styles.icon_notifier}
+					name='dot-single'
+					size={26}
+					color='red'
+				/>
 			</View>
 		</View>
 	);
