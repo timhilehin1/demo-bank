@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		padding: 16,
+		marginVertical:16
 	},
 
     avatar_Wrapper:{

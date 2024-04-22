@@ -2,12 +2,7 @@ import React from "react";
 import {
 	Text,
 	View,
-	SafeAreaView,
-	Image,
-	ScrollView,
 	Dimensions,
-	TouchableOpacity,
-	TouchableHighlight,
 } from "react-native";
 import styles from "./Advert.style";
 const screenWidth = Dimensions.get("window").width;

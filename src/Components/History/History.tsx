@@ -1,11 +1,5 @@
-import React from "react";
-import {
-	Text,
-	View,
-	Pressable,
-	Image,
-	FlatList,
-} from "react-native";
+import React, { useMemo } from "react";
+import { Text, View, Pressable, Image, FlatList } from "react-native";
 import { HistoryData, getNairaFormat } from "../../../utils";
 import { styles } from "./History.style";
 
@@ -50,36 +44,39 @@ export const TransactionWrapper = ({
 };
 
 export const History = () => {
-	return (
-		<View style={styles.container}>
-			<FlatList
-				scrollEnabled={false}
-        nestedScrollEnabled={true}
-				data={HistoryData.splice(0, 3)}
-				ItemSeparatorComponent={() => (
-					<View
-						style={{
-							borderColor: "#f5f5f9",
-							borderBottomWidth: 1,
-							marginHorizontal: 16,
-						}}
-					/>
-				)}
-				renderItem={({ item }) => (
-					<Pressable
-						style={({ pressed }) => [
-							pressed ? { backgroundColor: "#f2f2f7" } : {},
-						]}
-					>
-						<TransactionWrapper
-							name={item.name}
-							type={item.type}
-							transaction_date={item.transaction_date}
-							amount={item.amount}
+	return useMemo(
+		() => (
+			<View style={styles.container}>
+				<FlatList
+					scrollEnabled={false}
+					nestedScrollEnabled={true}
+					data={HistoryData.splice(0, 3)}
+					ItemSeparatorComponent={() => (
+						<View
+							style={{
+								borderColor: "#f5f5f9",
+								borderBottomWidth: 1,
+								marginHorizontal: 16,
+							}}
 						/>
-					</Pressable>
-				)}
-			/>
-		</View>
+					)}
+					renderItem={({ item }) => (
+						<Pressable
+							style={({ pressed }) => [
+								pressed ? { backgroundColor: "#f2f2f7" } : {},
+							]}
+						>
+							<TransactionWrapper
+								name={item.name}
+								type={item.type}
+								transaction_date={item.transaction_date}
+								amount={item.amount}
+							/>
+						</Pressable>
+					)}
+				/>
+			</View>
+		),
+		[HistoryData]
 	);
 };

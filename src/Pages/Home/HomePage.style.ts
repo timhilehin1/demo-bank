@@ -6,7 +6,10 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 		flex: 1,
 		borderColor: "none",
-		marginBottom:10
+		marginBottom: 10,
+		backgroundColor: defaultStyle.baseColor,
+		paddingHorizontal:14
+
 	},
 
 	sections_Wrapper: {
@@ -17,9 +20,10 @@ const styles = StyleSheet.create({
 
 	balance_card: {
 		backgroundColor: defaultStyle.baseTextColor,
-		borderRadius: 5,
-		height: 50,
+		borderRadius: 10,
+		height: 200,
 		color: defaultStyle.baseWhiteColor,
+		position: "relative",
 	},
 
 	section: {

@@ -1,13 +1,19 @@
 import React from "react";
-import { SafeAreaView } from "react-native";
-import Home from "./src/Screens/Home/Home";
-import { globalStyles } from "./src/styles/global";
-import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from "./src/Screens/Home/HomeScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+const Stack = createNativeStackNavigator();
 export default function App() {
 	return (
-		<SafeAreaView style={globalStyles.container}>
-			<Home />
-		</SafeAreaView>
+		<NavigationContainer>
+			<Stack.Navigator initialRouteName='HomeScreen'>
+				<Stack.Screen
+					name='HomeScreen'
+					component={HomeScreen}
+					options={{ headerShown: false }}
+				/>
+			</Stack.Navigator>
+		</NavigationContainer>
 	);
 }

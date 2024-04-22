@@ -118,3 +118,14 @@ export const getNairaFormat = (amount : any) => {
 	}
 	return NairaFormat.format(0);
 };
+
+export function maskMiddleNumbers(number: number) {
+    const numberString = number.toString();
+    if (numberString.length <= 8) {
+        return numberString.replace(/\d{4}/g, '$& ');
+    } else {
+        const middleNumbers = numberString.slice(Math.floor((numberString.length - 8) / 2), -Math.ceil((numberString.length - 8) / 2));
+        const maskedMiddle = middleNumbers.replace(/\d/g, '*');
+        return numberString.replace(middleNumbers, maskedMiddle).replace(/\d{4}/g, '$& ');
+    }
+}

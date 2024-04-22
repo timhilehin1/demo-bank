@@ -6,7 +6,7 @@ import { Entypo } from "@expo/vector-icons";
 
 function HomeHeader() {
 	return (
-		<View style={styles.container}>
+		<SafeAreaView style={styles.container}>
 			<View style={styles.avatar_Wrapper}>
 				<Image
 					source={require("../../../assets/images/avatar.jpg")}
@@ -33,7 +33,7 @@ function HomeHeader() {
 					color='red'
 				/>
 			</View>
-		</View>
+		</SafeAreaView>
 	);
 }
 

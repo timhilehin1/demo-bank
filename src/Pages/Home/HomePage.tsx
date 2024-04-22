@@ -14,7 +14,7 @@ import {
 } from "react-native";
 import HomeHeader from "../../Components/HomeHeader/HomeHeader";
 import Advert from "../../Components/Advert/Advert";
-import styles from "./Home.style";
+import styles from "./HomePage.style";
 import { Entypo } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -25,10 +25,11 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { History } from "../../Components/History/History";
 import { defaultStyle } from "../../styles/variable";
+import { getNairaFormat, maskMiddleNumbers } from "../../../utils";
 
 SplashScreen.preventAutoHideAsync();
 
-function Home() {
+function HomePage() {
 	const [fontsLoaded, fontError] = useFonts({
 		InterBlack: require("../../../assets/fonts/Inter-Black.ttf"),
 		InterBold: require("../../../assets/fonts/Inter-Bold.ttf"),
@@ -36,6 +37,7 @@ function Home() {
 		InterSemiBold: require("../../../assets/fonts/Inter-SemiBold.ttf"),
 	});
 	const [currentIndex, setCurrentIndex] = useState<number>(0);
+	const [balance, setBalance] = useState<boolean>(false);
 	const screenWidth = Math.round(Dimensions.get("window").width);
 	const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
 		const totalWidth = event.nativeEvent.layoutMeasurement.width;
@@ -57,7 +59,7 @@ function Home() {
 	return (
 		<ScrollView
 			showsVerticalScrollIndicator={false}
-			style={styles.container}
+			contentContainerStyle={[styles.container]}
 			onLayout={onLayoutRootView}
 		>
 			<StatusBar
@@ -67,9 +69,114 @@ function Home() {
 			/>
 			{/* introduction */}
 			<HomeHeader />
-			{/* <View style={styles.balance_card}></View> */}
-			{/* balance */}
-			<Image source={require("../../../assets/images/accountCard.png")} />
+
+			<View style={[styles.balance_card]}>
+				<View
+					style={{
+						display: "flex",
+						flexDirection: "row",
+						gap: 8,
+						justifyContent: "center",
+						marginTop: 16,
+					}}
+				>
+					<Text
+						style={{
+							color: "#ffffff",
+							fontFamily: "InterRegular",
+							fontSize: 14,
+						}}
+					>
+						Account Balance
+					</Text>
+					<Image source={require("../../../assets/images/naijaFlag.png")} />
+				</View>
+				<View
+					style={{
+						height: 1,
+						backgroundColor: defaultStyle.baseBorderColor,
+						alignSelf: "stretch",
+						position: "absolute",
+						top: 50,
+						bottom: 0,
+						right: 12,
+						left: 12,
+					}}
+				/>
+				<View
+					style={{
+						display: "flex",
+						flexDirection: "row",
+						gap: 8,
+						justifyContent: "center",
+						alignItems: "center",
+						marginTop: 20,
+					}}
+				>
+					{balance ? (
+						<Text
+							style={{
+								color: "#ffffff",
+								fontFamily: "InterRegular",
+								fontSize: 20,
+								fontWeight: "900",
+							}}
+						>
+							{getNairaFormat("500000")}
+						</Text>
+					) : (
+						<Text
+							style={{
+								color: "#ffffff",
+								fontFamily: "InterRegular",
+								fontSize: 20,
+								fontWeight: "900",
+							}}
+						>
+							****
+						</Text>
+					)}
+
+					{balance ? (
+						<FontAwesome
+							onPress={() => {
+								setBalance(!balance);
+							}}
+							name='eye-slash'
+							size={20}
+							color='#ffffff'
+						/>
+					) : (
+						<FontAwesome
+							onPress={() => {
+								setBalance(!balance);
+							}}
+							name='eye'
+							size={20}
+							color='#ffffff'
+						/>
+					)}
+				</View>
+				<Image
+					style={{ position: "absolute", bottom: 20, right: 20 }}
+					source={require("../../../assets/images/mastercardLogo.png")}
+				/>
+				<Text
+					style={{
+						color: "#ffffff",
+						fontFamily: "InterRegular",
+						fontSize: 16,
+						fontWeight: "900",
+						position: "absolute",
+						bottom: 20,
+						left: 20,
+					}}
+				>
+					{maskMiddleNumbers(1111222233334444)}
+				</Text>
+			</View>
+
+			{/* <Image source={require("../../../assets/images/accountCard.png")} /> */}
 			<View style={styles.sections_Wrapper}>
 				<View style={styles.section}>
 					<View style={styles.icon_Wrapper}>
@@ -94,10 +201,10 @@ function Home() {
 
 				<View style={styles.section}>
 					<View style={styles.icon_Wrapper}>
-						<FontAwesome name='qrcode' size={30} color='black' />
+						<Feather name='menu' size={25} color='black' />
 					</View>
 
-					<Text style={{ fontFamily: "InterRegular" }}>Scan</Text>
+					<Text style={{ fontFamily: "InterRegular" }}>More</Text>
 				</View>
 
 				{/* <View style={styles.section}>
@@ -110,29 +217,6 @@ function Home() {
 					</View>
 					<Text>More</Text>
 				</View> */}
-			</View>
-
-			{/* advert */}
-			<FlatList
-				style={[{ width: screenWidth * 0.95, overflow: "hidden", flexGrow: 0 }]}
-				data={advertData}
-				renderItem={({ item }) => <Advert text={item.text} />}
-				horizontal
-				pagingEnabled
-				onScroll={onScroll}
-				showsHorizontalScrollIndicator={false}
-			/>
-
-			<View style={[styles.paginationWrapper]}>
-				{advertData.map((item, index) => (
-					<View
-						key={index}
-						style={[
-							styles.paginationDot,
-							currentIndex === index ? styles.activePaginationDot : {},
-						]}
-					></View>
-				))}
 			</View>
 
 			{/* transaction history */}
@@ -153,8 +237,30 @@ function Home() {
 			</View>
 
 			<History />
+			{/* advert */}
+			{/* <FlatList
+				style={[{ width: screenWidth * 0.95, overflow: "hidden", flexGrow: 0 }]}
+				data={advertData}
+				renderItem={({ item }) => <Advert text={item.text} />}
+				horizontal
+				pagingEnabled
+				onScroll={onScroll}
+				showsHorizontalScrollIndicator={false}
+			/>
+
+			<View style={[styles.paginationWrapper]}>
+				{advertData.map((item, index) => (
+					<View
+						key={index}
+						style={[
+							styles.paginationDot,
+							currentIndex === index ? styles.activePaginationDot : {},
+						]}
+					></View>
+				))}
+			</View> */}
 		</ScrollView>
 	);
 }
 
-export default Home;
+export default HomePage;
