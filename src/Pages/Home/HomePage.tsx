@@ -26,10 +26,16 @@ import * as SplashScreen from "expo-splash-screen";
 import { History } from "../../Components/History/History";
 import { defaultStyle } from "../../styles/variable";
 import { getNairaFormat, maskMiddleNumbers } from "../../../utils";
+import {
+	useNavigation,
+	ParamListBase,
+	NavigationProp,
+} from "@react-navigation/native";
 
 SplashScreen.preventAutoHideAsync();
 
 function HomePage() {
+	const navigation: NavigationProp<ParamListBase> = useNavigation();
 	const [fontsLoaded, fontError] = useFonts({
 		InterBlack: require("../../../assets/fonts/Inter-Black.ttf"),
 		InterBold: require("../../../assets/fonts/Inter-Bold.ttf"),
@@ -231,12 +237,13 @@ function HomePage() {
 						textDecorationLine: "underline",
 						color: "#2C62EE",
 					}}
+					onPress={() => navigation.navigate("History")}
 				>
 					View all
 				</Text>
 			</View>
 
-			<History />
+			<History type='flatlist' />
 			{/* advert */}
 			{/* <FlatList
 				style={[{ width: screenWidth * 0.95, overflow: "hidden", flexGrow: 0 }]}

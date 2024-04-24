@@ -1,20 +1,13 @@
 import React from "react";
-import {
-	Text,
-	View,
-	SafeAreaView,
-	Image,
-	ScrollView,
-	FlatList,
-	NativeSyntheticEvent,
-	NativeScrollEvent,
-	Dimensions,
-	Pressable,
-	StatusBar,
-} from "react-native";
-
+import { View } from "react-native";
+import { History } from "../../Components/History/History";
+import styles from "../Home/HomePage.style";
 function HistoryPage() {
-	return <Text>HistoryPage</Text>;
+	return (
+		<View style={styles.container}>
+			<History type='scrolllist' />
+		</View>
+	);
 }
 
 export default HistoryPage;

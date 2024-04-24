@@ -17,6 +17,9 @@ export default function HomeScreen() {
 		<Tab.Navigator
 			initialRouteName='Home'
 			screenOptions={({ route }) => ({
+				tabBarLabelStyle: {
+					display: "none",
+				},
 				tabBarIcon: ({ focused, color, size }) => {
 					let iconComponent;
 					if (route.name === "Home") {
@@ -61,7 +64,11 @@ export default function HomeScreen() {
 				name='Home'
 				component={HomePage}
 			/>
-			<Tab.Screen name='History' component={HistoryPage} />
+			<Tab.Screen
+				name='History'
+				options={{ title: "Transactions" }}
+				component={HistoryPage}
+			/>
 			<Tab.Screen name='Scan' component={ScanPage} />
 			<Tab.Screen name='Profile' component={ProfilePage} />
 		</Tab.Navigator>
