@@ -10,15 +10,16 @@ import {
 import { HistoryData, getNairaFormat, historyList } from "../../../utils";
 import { styles } from "./History.style";
 
+
 export const TransactionWrapper = ({
 	name,
 	type,
-	transaction_date,
+	transaction_time,
 	amount,
 }: {
 	name: string;
 	type: string;
-	transaction_date?: string;
+	transaction_time?: string;
 	amount: number;
 }) => {
 	return (
@@ -35,14 +36,25 @@ export const TransactionWrapper = ({
 					source={require("../../../assets/images/uba.png")}
 				/>
 				<View>
-					<Text>{name}</Text>
-					<Text style={{ marginTop: 8, fontSize: 12, color: "#a8a8a8" }}>
-						{transaction_date}
+					<Text style={{ fontFamily: "InterRegular" }}>{name}</Text>
+					<Text
+						style={{
+							marginTop: 8,
+							fontSize: 12,
+							color: "#a8a8a8",
+							fontFamily: "InterRegular",
+						}}
+					>
+						{transaction_time}
 					</Text>
 				</View>
 			</View>
 			<Text
-				style={[type === "cr" ? { color: "#169B62" } : { color: "#EB001B" }]}
+				style={[
+					type === "cr"
+						? { color: "#169B62", fontFamily: "InterRegular" }
+						: { color: "#EB001B", fontFamily: "InterRegular" },
+				]}
 			>
 				{getNairaFormat(amount?.toString())}
 			</Text>
@@ -77,7 +89,7 @@ export const History = ({ type }: { type: string }) => {
 								<TransactionWrapper
 									name={item.name}
 									type={item.type}
-									transaction_date={item.transaction_date}
+									transaction_time={item.transaction_time}
 									amount={item.amount}
 								/>
 							</Pressable>
@@ -108,7 +120,7 @@ export const History = ({ type }: { type: string }) => {
 									<TransactionWrapper
 										name={item.name}
 										type={item.type}
-										transaction_date={item.transaction_time}
+										transaction_time={item.transaction_time}
 										amount={item.amount}
 									/>
 								</Pressable>

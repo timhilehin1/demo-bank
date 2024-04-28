@@ -31,6 +31,7 @@ import {
 	ParamListBase,
 	NavigationProp,
 } from "@react-navigation/native";
+import CustomText from "../../Components/Texts/CustomText";
 
 SplashScreen.preventAutoHideAsync();
 

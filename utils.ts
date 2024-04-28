@@ -41,7 +41,7 @@ export const HistoryData = [
 	{
 		id: 1,
 		name: "Babalola Temiloluwa",
-		transaction_date: "2.55am",
+		transaction_time: "2.55am",
 		type: "cr",
 		recipient_sender: "GTB",
 		amount: 70000,
@@ -49,7 +49,7 @@ export const HistoryData = [
 	{
 		id: 2,
 		name: "Oladapo Timilehin",
-		transaction_date: "2.55am",
+		transaction_time: "2.55am",
 		type: "cr",
 		recipient_sender: "GTB",
 		amount: 50000,
@@ -57,7 +57,7 @@ export const HistoryData = [
 	{
 		id: 3,
 		name: "Gbadebo Johnson",
-		transaction_date: "2.55am",
+		transaction_time: "2.55am",
 		type: "dr",
 		recipient_sender: "GTB",
 		amount: 60000,
@@ -65,7 +65,7 @@ export const HistoryData = [
 	{
 		id: 4,
 		name: "Olu T",
-		transaction_date: "2.55am",
+		transaction_time: "2.55am",
 		type: "cr",
 		recipient_sender: "GTB",
 		amount: 50000,
@@ -73,7 +73,7 @@ export const HistoryData = [
 	{
 		id: 5,
 		name: "Babalola Temiloluwa",
-		transaction_date: "2.55am",
+		transaction_time: "2.55am",
 		type: "dr",
 		recipient_sender: "GTB",
 		amount: 50000,
@@ -81,7 +81,7 @@ export const HistoryData = [
 	{
 		id: 6,
 		name: "Babalola Temiloluwa",
-		transaction_date: "2.55am",
+		transaction_time: "2.55am",
 		type: "cr",
 		recipient_sender: "GTB",
 		amount: 50000,
@@ -89,7 +89,7 @@ export const HistoryData = [
 	{
 		id: 7,
 		name: "Babalola Temiloluwa",
-		transaction_date: "2.55am",
+		transaction_time: "2.55am",
 		type: "dr",
 		recipient_sender: "GTB",
 		amount: 50000,
@@ -97,7 +97,7 @@ export const HistoryData = [
 	{
 		id: 8,
 		name: "Babalola Temiloluwa",
-		transaction_date: "2.55am",
+		transaction_time: "2.55am",
 		type: "dr",
 		recipient_sender: "GTB",
 		amount: 50000,
@@ -126,7 +126,7 @@ export const historyList = [
 			{
 				id: 1,
 				name: "Babalola Temiloluwa",
-				transaction_date: "2.55am",
+				transaction_time: "2.55am",
 				type: "cr",
 				recipient_sender: "GTB",
 				amount: 70000,
@@ -134,7 +134,7 @@ export const historyList = [
 			{
 				id: 2,
 				name: "Oladapo Timilehin",
-				transaction_date: "2.55am",
+				transaction_time: "2.55am",
 				type: "cr",
 				recipient_sender: "GTB",
 				amount: 50000,
@@ -142,7 +142,7 @@ export const historyList = [
 			{
 				id: 3,
 				name: "Gbadebo Johnson",
-				transaction_date: "2.55am",
+				transaction_time: "2.55am",
 				type: "dr",
 				recipient_sender: "GTB",
 				amount: 60000,

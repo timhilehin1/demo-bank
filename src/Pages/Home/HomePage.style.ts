@@ -8,8 +8,7 @@ const styles = StyleSheet.create({
 		borderColor: "none",
 		marginBottom: 10,
 		backgroundColor: defaultStyle.baseColor,
-		paddingHorizontal:14
-
+		paddingHorizontal: 14,
 	},
 
 	sections_Wrapper: {
